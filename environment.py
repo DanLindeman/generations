@@ -35,10 +35,11 @@ class Environment:
             for creature in creatures:
                 child = Creature(randint(0, 600), randint(0, 600), color=creature.color, size=creature.size)
                 self.add_creature(child.x, child.y, child.color, creature.size)
+            self.mutate_some_creatures()        
             self.years = 0
 
     def enforce_selection_pressure(self):
-        """Weight selection based on blue color
+        """Weight selection based on blueness
         """
         self.set_distance_from_pressure()
         self.creatures.sort(key=operator.attrgetter("distance_from_pressure"), reverse=False)
@@ -48,3 +49,9 @@ class Environment:
         for creature in self.creatures:
             creature.distance_from_pressure = abs(creature.color[2] - self.color[2])
 
+    def mutate_some_creatures(self):
+        """Call each creatures mutate method
+        """
+        mutants = random.sample(self.creatures, int(len(self.creatures)*0.1))
+        for mutant in mutants:
+            mutant.mutate_color()

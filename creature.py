@@ -15,3 +15,8 @@ class Creature(object):
             self.size = randint(5, 20)
         self.thickness = 0 # indicates creature circles are filled in
         self.distance_from_pressure = None
+
+    def mutate_color(self):
+        """Change one attribute randomly
+        """
+        self.color = (randint(0,255), randint(0,255), randint(0,255))

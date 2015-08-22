@@ -39,5 +39,5 @@ class Game(object):
 
 if __name__ == '__main__':
     game = Game()
-    game.add_creatures(10)
+    game.add_creatures(20)
     game.run_game()
