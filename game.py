@@ -9,15 +9,16 @@ pp = pprint.PrettyPrinter(indent=4)
 
 class Game(object):
 
-    def __init__(self):
+    def __init__(self, max_population_size):
         pygame.display.set_caption('Generations')
-        width, height = (600, 600)
+        width, height = (800, 800)
         self.screen = pygame.display.set_mode((width, height))
-        self.env = Environment(width, height)
+        self.env = Environment(width, height, max_population_size)
+        self.add_creatures()
 
-    def add_creatures(self, number_of_creatures):
-        for x in range(number_of_creatures):
-            self.env.add_creature(x=randint(0,600), y=randint(0,600))
+    def add_creatures(self):
+        for x in range(self.env.max_population_size):
+            self.env.add_creature(x=randint(0,800), y=randint(0,800))
 
     def handle_event(self, event):
         running = True
@@ -38,6 +39,5 @@ class Game(object):
             pygame.display.flip()
 
 if __name__ == '__main__':
-    game = Game()
-    game.add_creatures(20)
+    game = Game(50)
     game.run_game()
