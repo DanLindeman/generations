@@ -3,7 +3,9 @@ from creature import Creature
 from environment import Environment
 import time
 from random import randint
+import pprint
 
+pp = pprint.PrettyPrinter(indent=4)
 
 class Game(object):
 
@@ -29,14 +31,13 @@ class Game(object):
             for event in pygame.event.get():
                 running = self.handle_event(event)
             self.screen.fill(self.env.color)
-            self.env.remove_creature()
+            self.env.enforce_selection_pressure()
             time.sleep(0.001)
-
             for creature in self.env.creatures:
                 pygame.draw.circle(self.screen, creature.color, (int(creature.x), int(creature.y)), creature.size, creature.thickness)
             pygame.display.flip()
 
 if __name__ == '__main__':
     game = Game()
-    game.add_creatures(4)
+    game.add_creatures(10)
     game.run_game()

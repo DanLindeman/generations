@@ -12,5 +12,6 @@ class Creature(object):
             self.color = (randint(0,255), randint(0,255), randint(0,255))
         self.size = size
         if size == None:
-            self.size = randint(0, 10)
+            self.size = randint(5, 20)
         self.thickness = 0 # indicates creature circles are filled in
+        self.distance_from_pressure = None
