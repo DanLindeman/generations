@@ -33,8 +33,9 @@ class Game(object):
                 running = self.handle_event(event)
             self.screen.fill(self.env.color)
             self.env.enforce_selection_pressure()
-            time.sleep(0.001)
+            time.sleep(0.002)
             for creature in self.env.creatures:
+                pygame.draw.circle(self.screen, (255,255,255), (int(creature.x), int(creature.y)), creature.size + 1, creature.thickness)
                 pygame.draw.circle(self.screen, creature.color, (int(creature.x), int(creature.y)), creature.size, creature.thickness)
             pygame.display.flip()
 

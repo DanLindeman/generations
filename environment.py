@@ -28,7 +28,6 @@ class Environment:
         """
         try:
             self.years += 1
-            
             dead_creature = self.creatures.pop()
             for year in range(self.years):
                 self.genepool.append(dead_creature)
